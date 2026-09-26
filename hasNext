@@ -1,0 +1,48 @@
+import java.util.Scanner;
+public class Main{
+    public static void main(String[] args) {
+        System.out.println("enter your age: ");
+        Scanner cam = new Scanner(System.in);
+        boolean b1 = cam.hasNextInt();
+        System.out.println(b1);
+
+    }
+}
+
+
+
+
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+
+        if (sc.hasNextInt()) {
+            int num = sc.nextInt();
+            System.out.println("Yes! You entered a number: " + num);
+        } else {
+            String input = sc.next();   // read the bad input as text
+            System.out.println("No! '" + input + "' is not a number.");
+        }
+    }
+}
+
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter your age: ");
+        while (!sc.hasNextInt()) {          // while it's NOT a number...
+            System.out.println("That's not a number. Try again:");
+            sc.next();                       // throw away the bad input
+        }
+        int age = sc.nextInt();              // now it's safe
+        System.out.println("Your age is " + age);
+    }
+}
