@@ -1,0 +1,95 @@
+Example 1: A static method
+
+java
+public class Main {
+
+    static void sayHi() {
+        System.out.println("Hi!");
+    }
+
+    public static void main(String[] args) {
+        sayHi();          // ✅ works — no object needed
+    }
+}
+
+Output:
+
+text
+Hi!
+You never wrote new Main(). Because sayHi is static.
+
+
+
+
+
+Example 2: A NON-static method (needs an object)
+java
+public class Main {
+
+    void sayHi() {                    // NO static
+        System.out.println("Hi!");
+    }
+
+    public static void main(String[] args) {
+        sayHi();                      // ❌ ERROR — needs an object
+    }
+}
+To fix it, you must create an object:
+
+java
+public class Main {
+
+    void sayHi() {
+        System.out.println("Hi!");
+    }
+
+    public static void main(String[] args) {
+        Main m = new Main();          // create the object
+        m.sayHi();                    // now it works
+    }
+}
+So: no static → need new. static → no new needed.
+
+
+
+
+
+Example 3: Real Java methods
+Math.random() is static:
+
+java
+double x = Math.random();    // ✅ works — no "new Math()" needed
+String.length() is NOT static:
+
+java
+String s = "Hello";
+int n = s.length();          // ✅ you call it on a specific string
+You can't write String.length() — Java says "which string?" You need an actual string first.
+
+The side-by-side comparison
+java
+// STATIC — call it directly on the class
+Math.random();        // ✅
+Integer.parseInt("5");// ✅
+
+// NON-STATIC — must make an object first
+String s = "Hello";
+s.length();           // ✅
+
+// NON-STATIC — this would fail
+Math m = new Math();  // ❌ Java doesn't even allow this
+The rule
+Keyword	How you use it
+static	ClassName.method()
+not static	object.method()
+Math.random() → static → class name + method
+
+s.length() → not static → object + method
+
+Why main is static
+When Java starts your program, no objects exist yet. So it needs a method it can call without any object. That's static.
+
+If main weren't static, Java would say: "Okay, but... which object do I call it on?" — and there are none. Dead end.
+
+That's the whole reason.
+
