@@ -12,6 +12,16 @@ public class Main{
 
 
 
+  if (sc.hasNextDouble()) {
+            double d = sc.nextDouble();
+            System.out.println("You entered: " + d);
+        } else {
+            String input = sc.next();
+            System.out.println("'" + input + "' is not a number.");
+        }
+
+
+
 
 public class Main {
     public static void main(String[] args) {
@@ -28,6 +38,7 @@ public class Main {
         }
     }
 }
+
 
 
 
